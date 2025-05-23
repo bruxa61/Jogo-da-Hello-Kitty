@@ -1,0 +1,1 @@
+{"camisaMARU": 2, "acessorioMARU": 1, "chapeuMARU": 2}
