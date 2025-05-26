@@ -1,6 +1,7 @@
 import flet as ft
 from hello_kitty import criar_personagem_hello_kitty
 from badtz_maru import criar_personagem_badtz_maru
+from kuromi import criar_personagem_kuromi
 
 estado = {"camisa": None, "acessorio": None, "lacinho": None}
 estado_maru = {"camisaMARU": None, "acessorioMARU": None, "chapeuMARU": None}
@@ -22,8 +23,9 @@ def main(page: ft.Page):
 
     hello_kitty = criar_personagem_hello_kitty(page)
     maru = criar_personagem_badtz_maru(page)
+    kuromi = criar_personagem_kuromi(page)
 
-    personagem_hello = True  # Começa com Hello Kitty
+    indice_personagem = 0  # Começa com Hello Kitty
     personagem_atual = ft.Column([hello_kitty])
 
     def mudar_cor_fundo(e, cor):
@@ -41,26 +43,32 @@ def main(page: ft.Page):
         )
 
     def trocar_personagem(e):
-        nonlocal personagem_hello
+        nonlocal indice_personagem
         personagem_atual.controls.clear()
 
-        if personagem_hello:
+        if indice_personagem == 0:
             personagem_atual.controls.append(maru)
+        elif indice_personagem == 1:
+            personagem_atual.controls.append(kuromi)
         else:
             personagem_atual.controls.append(hello_kitty)
 
-        personagem_hello = not personagem_hello
+        indice_personagem = (indice_personagem + 1) % 3  # Cicla entre 0, 1 e 2
         page.update()
 
-    botao_trocar = ft.ElevatedButton(
-        text="Trocar Personagem",
+    # Setas com imagem
+    seta_esquerda = ft.Container(
+        content=ft.Image(src="assets/seta_esquerda.png", width=100, height=100),
         on_click=trocar_personagem,
-        style=ft.ButtonStyle(
-            bgcolor="#f48fb1",
-            color="white",
-            text_style=ft.TextStyle(font_family="pixel", size=12)
-        )
+        tooltip="Anterior"
     )
+
+    seta_direita = ft.Container(
+        content=ft.Image(src="assets/seta_direita.png", width=100, height=100),
+        on_click=trocar_personagem,
+        tooltip="Próximo"
+    )
+
 
     coluna1_cores = cores_paleta[::2]
     coluna2_cores = cores_paleta[1::2]
@@ -82,7 +90,7 @@ def main(page: ft.Page):
 
     root_stack = ft.Stack(
         [
-            # Fundo fixo
+            # Fundo
             ft.Container(
                 content=ft.Image(
                     src="assets/background.jpg",
@@ -94,7 +102,7 @@ def main(page: ft.Page):
                 top=-80
             ),
 
-            # Paleta de cores fixa
+            # Paleta de cores
             ft.Container(
                 content=paleta_row,
                 left=163.2,
@@ -102,19 +110,26 @@ def main(page: ft.Page):
                 width=200,
             ),
 
-            # Personagem atual (Hello Kitty ou Maru)
+            # Seta esquerda
+            ft.Container(
+                content=seta_esquerda,
+                left=370,
+                top=250
+            ),
+
+            # Personagem
             ft.Container(
                 content=personagem_atual,
                 left=430,
                 top=170
             ),
 
-            # Botão para trocar personagem
+            # Seta direita
             ft.Container(
-                content=botao_trocar,
-                left=430,
-                top=520
-            )
+                content=seta_direita,
+                left=730,
+                top=250
+            ),
         ],
         width=1024,
         height=768

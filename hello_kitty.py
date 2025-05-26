@@ -97,7 +97,7 @@ def criar_personagem_hello_kitty(page: ft.Page):
                 )
             ),
             ft.ElevatedButton(
-                "Lacinho",
+                "Chapéu",
                 on_click=lambda e: trocar_roupa_action(e, "lacinho"),
                 style=ft.ButtonStyle(
                     bgcolor="#f48fb1", color="white",
