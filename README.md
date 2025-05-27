@@ -2,7 +2,11 @@
 
 Um mini-jogo de estilo *dress-up* inspirado na Hello Kitty, onde o usuário pode escolher roupas, laços, acessórios e mudar a cor do fundo com uma paleta interativa.
 
-![Preview](assets/look_print.png)
+---
+
+<img src="Jogo-da-Hello-Kitty/print.png" alt="Exemplo imagem">
+
+---
 
 ## ✨ Funcionalidades
 
