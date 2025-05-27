@@ -4,7 +4,7 @@ Um mini-jogo de estilo *dress-up* inspirado na Hello Kitty, onde o usuário pode
 
 ---
 
-<img src="Jogo-da-Hello-Kitty/print.png" alt="Exemplo imagem">
+<img src="print.png" alt="Exemplo imagem">
 
 ---
 
