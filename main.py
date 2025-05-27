@@ -3,9 +3,6 @@ from hello_kitty import criar_personagem_hello_kitty
 from badtz_maru import criar_personagem_badtz_maru
 from kuromi import criar_personagem_kuromi
 
-estado = {"camisa": None, "acessorio": None, "lacinho": None}
-estado_maru = {"camisaMARU": None, "acessorioMARU": None, "chapeuMARU": None}
-
 cores_paleta = [
     "#fed1dd", "#fdcee6", "#f4ccea", "#eac2e6", "#eeb4e8", 
     "#e8bad9", "#e4b7d7", "#dab5d8", "#d6b3df", "#c5afd8",
